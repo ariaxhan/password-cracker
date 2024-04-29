@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import hashlib
+from zxcvbn import zxcvbn
+
 
 app = Flask(__name__)
 
@@ -30,10 +32,11 @@ def index():
 @app.route('/check_password', methods=['POST'])
 def check_password():
     password = request.form['password']
-    hashed_password = hash_password(password)
-    is_common_password = hashed_password in password_set
-    return render_template('result.html', is_common=is_common_password, password=password, hashed_password=hashed_password)
-
+    result = zxcvbn(password)
+    score = result['score']
+    feedback = result['feedback']['suggestions']
+    is_common_password = hash_password(password) in password_set
+    return render_template('result.html', is_common=is_common_password, password=password, score=score, feedback=feedback)
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()

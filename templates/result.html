@@ -13,6 +13,13 @@
     {% else %}
     <p>This password is not common.</p>
     {% endif %}
+	<h3>Password Strength: {{ score }}/4</h3>
+<ul>
+    {% for suggestion in feedback %}
+        <li>{{ suggestion }}</li>
+    {% endfor %}
+</ul>
+
     <a href="/">Check another password</a>
 </body>
 </html>
