@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Check Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>Your password: <strong>{{ password }}</strong></p>
+    <p>Your password's SHA-256 hash: <strong>{{ hashed_password }}</strong></p>
+    {% if is_common %}
+    <p>This is a common password and may be easily guessed!</p>
+    {% else %}
+    <p>This password is not common.</p>
+    {% endif %}
+    <a href="/">Check another password</a>
+</body>
+</html>
