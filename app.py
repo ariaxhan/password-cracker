@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import hashlib
 from zxcvbn import zxcvbn
-
+from passlib import pwd
 
 app = Flask(__name__)
 
@@ -24,6 +24,10 @@ password_set2 = load_common_passwords('10-million-password-list-top-1000000.txt'
 password_set3 = load_common_passwords('500-worst-passwords.txt')
 password_set = password_set1.union(password_set2).union(password_set3)
 
+def gen_better_password(curPassword):
+    newPass = pwd.genphrase(entropy=30, wordset="eff_long", sep="");
+    return newPass;
+
 
 @app.route('/')
 def index():
@@ -37,7 +41,7 @@ def check_password():
     feedback = result['feedback']['suggestions']
     hashed = hash_password(password)
     is_common_password = hash_password(password) in password_set
-    return render_template('result.html', hashed_password=hashed, is_common=is_common_password, password=password, score=score, feedback=feedback)
+    return render_template('result.html', hashed_password=hashed, is_common=is_common_password, password=password, score=score, feedback=feedback, better=gen_better_password(password), better_score=zxcvbn(gen_better_password(password))['score'])
 
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()

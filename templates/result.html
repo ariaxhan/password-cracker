@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Password Check Result</title>
+	 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+	<div class="result">
     <h1>Result</h1>
     <p>Your password: <strong>{{ password }}</strong></p>
     <p>Your password's SHA-256 hash: <strong>{{ hashed_password }}</strong></p>
@@ -14,12 +16,15 @@
     <p>This password is not common.</p>
     {% endif %}
 	<h3>Password Strength: {{ score }}/4</h3>
-<ul>
     {% for suggestion in feedback %}
         <li>{{ suggestion }}</li>
     {% endfor %}
-</ul>
 
+	<h3>Better password: {{ better }}</h3>
+	<br/>
+	<h3>Better password score: {{ better_score }}/4</h3>
+<br>
     <a href="/">Check another password</a>
+	</div>
 </body>
 </html>

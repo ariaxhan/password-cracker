@@ -1,0 +1,94 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: Monospace;
+    background-color: hsl(222, 22%, 47%);
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    background-color: hsl(221, 23%, 39%);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.result h3 {
+    margin-bottom: 10px;
+}
+
+.result ul {
+    padding-left: 20px;
+}
+
+.common-password {
+    color: red;
+}
+
+/* Interactive styles */
+/* Interactive styles */
+input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #7bafe7;
+    box-shadow: 0 0 8px 2px rgba(0, 123, 255, 0.5);
+    border-radius: 40px;
+}
+
+
+button:active {
+    background-color: #9dc8f7;
+    transform: translateY(1px);
+}
+
+a {
+    color: white;
+}
+
+.result  {
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.password-input {
+    width: 30vw;
+    margin: 0 auto; /* horizontally center the element */
+}
